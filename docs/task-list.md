@@ -16,4 +16,4 @@
 - [x] `T-003` [high] ドキュメントの役割を整理して読みやすくする
 - [x] `T-004` [medium] README.md にファイル構造と各ファイル/フォルダの説明を追記する
 - [x] `T-005` [medium] GitHub リポジトリ `git@github.com:kyarameru1005/app.git` を origin に設定する
-- [ ] `T-006` [high] 初回コミットを作成して GitHub に push する (doing)
+- [x] `T-006` [high] 初回コミットを作成して GitHub に push する
