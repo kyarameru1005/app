@@ -29,7 +29,8 @@ export default function CategoryEditPage({
           credentials: "include"
         });
         if (!response.ok) {
-          throw new Error("カテゴリ一覧の取得に失敗しました");
+          const payload = (await response.json()) as { message?: string };
+          throw new Error(payload.message ?? "カテゴリ一覧の取得に失敗しました");
         }
         const payload = (await response.json()) as CategoryListResponse;
         const current = payload.categories.find(
@@ -40,9 +41,7 @@ export default function CategoryEditPage({
         }
         setCategoryName(current.category_name);
       } catch (error) {
-        setErrorMessage(
-          error instanceof Error ? error.message : "カテゴリの取得に失敗しました"
-        );
+        setErrorMessage(error instanceof Error ? error.message : "通信に失敗しました");
       }
     };
     void loadCategory();
@@ -70,9 +69,7 @@ export default function CategoryEditPage({
       }
       window.location.href = "/categories";
     } catch (error) {
-      setErrorMessage(
-        error instanceof Error ? error.message : "カテゴリの更新に失敗しました"
-      );
+      setErrorMessage(error instanceof Error ? error.message : "通信に失敗しました");
       setIsSubmitting(false);
     }
   };

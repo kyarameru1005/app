@@ -25,9 +25,9 @@
 - [x] `T-010` [high] メモ一覧 / 詳細 / 作成 / 更新 / 削除 API とメモ repository を実装する
 - [x] `T-011` [medium] メモ一覧画面に検索・0件表示・カテゴリ管理遷移を実装する
 - [x] `T-012` [medium] メモ詳細 / 新規作成 / 編集 / 削除確認画面と API 連携を実装する
-- [ ] `T-013` [medium] エラーメッセージ表示を `docs/05_common/error_message_design.md` に合わせて統一する
+- [x] `T-013` [medium] エラーメッセージ表示を `docs/05_common/error_message_design.md` に合わせて統一する
 - [x] `T-014` [medium] README.md にアプリ概要、起動手順、主要コマンドを追加する
-- [ ] `T-015` [high] Docker 起動確認、API 動作確認、画面遷移確認を行い、未完了項目を洗い出す
+- [x] `T-015` [high] Docker 起動確認、API 動作確認、画面遷移確認を行い、未完了項目を洗い出す
 
 ## 実装順の目安
 
@@ -35,3 +35,12 @@
 - 第2段階: `T-006` 〜 `T-009`
 - 第3段階: `T-010` 〜 `T-013`
 - 第4段階: `T-014` 〜 `T-015`
+
+## 検証メモ（2026-04-19）
+
+- `docker compose up -d --build` で frontend/backend/db の3コンテナ起動を確認
+- `curl http://localhost:8080/health` が `{\"message\":\"backend is running\"}` を返すことを確認
+- 認証API: login -> callback -> me -> logout -> me(401) を確認
+- カテゴリAPI: 一覧取得 / 作成 / 更新の正常系を確認
+- メモAPI: 作成 / 一覧検索 / 詳細 / 更新 / 削除の正常系を確認
+- 画面遷移: 未ログイン `/memos` は `/` へ 307、ログイン済み `/` は `/memos` へ 307 を確認

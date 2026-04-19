@@ -24,14 +24,13 @@ export default function CategoryListPage() {
           credentials: "include"
         });
         if (!response.ok) {
-          throw new Error("カテゴリ一覧の取得に失敗しました");
+          const payload = (await response.json()) as { message?: string };
+          throw new Error(payload.message ?? "カテゴリ一覧の取得に失敗しました");
         }
         const payload = (await response.json()) as CategoryListResponse;
         setCategories(payload.categories);
       } catch (error) {
-        setErrorMessage(
-          error instanceof Error ? error.message : "カテゴリ一覧の取得に失敗しました"
-        );
+        setErrorMessage(error instanceof Error ? error.message : "通信に失敗しました");
       }
     };
     void load();

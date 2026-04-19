@@ -40,14 +40,13 @@ export default function MemoListPage() {
           credentials: "include"
         });
         if (!response.ok) {
-          throw new Error("メモ一覧の取得に失敗しました");
+          const payload = (await response.json()) as { message?: string };
+          throw new Error(payload.message ?? "メモ一覧の取得に失敗しました");
         }
         const payload = (await response.json()) as MemoListResponse;
         setMemos(payload.memos);
       } catch (error) {
-        setErrorMessage(
-          error instanceof Error ? error.message : "メモ一覧の取得に失敗しました"
-        );
+        setErrorMessage(error instanceof Error ? error.message : "通信に失敗しました");
       }
     };
     void load();

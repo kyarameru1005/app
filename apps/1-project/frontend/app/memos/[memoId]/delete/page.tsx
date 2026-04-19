@@ -26,7 +26,7 @@ export default function MemoDeleteConfirmPage({
       }
       window.location.href = "/memos";
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "メモの削除に失敗しました");
+      setErrorMessage(error instanceof Error ? error.message : "通信に失敗しました");
       setIsSubmitting(false);
     }
   };

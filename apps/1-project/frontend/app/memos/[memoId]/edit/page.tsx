@@ -50,7 +50,7 @@ export default function MemoEditPage({ params }: { params: { memoId: string } })
           setCategories(categoriesPayload.categories);
         }
       } catch (error) {
-        setErrorMessage(error instanceof Error ? error.message : "メモの取得に失敗しました");
+        setErrorMessage(error instanceof Error ? error.message : "通信に失敗しました");
       }
     };
     void load();
@@ -77,7 +77,7 @@ export default function MemoEditPage({ params }: { params: { memoId: string } })
       }
       window.location.href = `/memos/${params.memoId}`;
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "メモの更新に失敗しました");
+      setErrorMessage(error instanceof Error ? error.message : "通信に失敗しました");
       setIsSubmitting(false);
     }
   };

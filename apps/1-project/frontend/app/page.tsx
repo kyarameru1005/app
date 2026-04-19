@@ -35,7 +35,7 @@ export default function LoginPage() {
       }
       window.location.href = "/memos";
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "認証処理に失敗しました");
+      setErrorMessage(error instanceof Error ? error.message : "通信に失敗しました");
       setIsSubmitting(false);
     }
   };

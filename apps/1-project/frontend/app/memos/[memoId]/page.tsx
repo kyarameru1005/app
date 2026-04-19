@@ -31,7 +31,7 @@ export default function MemoDetailPage({ params }: { params: { memoId: string } 
         const payload = (await response.json()) as Memo;
         setMemo(payload);
       } catch (error) {
-        setErrorMessage(error instanceof Error ? error.message : "メモの取得に失敗しました");
+        setErrorMessage(error instanceof Error ? error.message : "通信に失敗しました");
       }
     };
     void load();

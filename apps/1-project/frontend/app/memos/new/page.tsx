@@ -23,12 +23,19 @@ export default function MemoCreatePage() {
 
   useEffect(() => {
     const load = async () => {
-      const response = await fetch(`${apiBaseUrl}/api/categories`, {
-        credentials: "include"
-      });
-      if (!response.ok) return;
-      const payload = (await response.json()) as CategoryListResponse;
-      setCategories(payload.categories);
+      try {
+        const response = await fetch(`${apiBaseUrl}/api/categories`, {
+          credentials: "include"
+        });
+        if (!response.ok) {
+          const payload = (await response.json()) as { message?: string };
+          throw new Error(payload.message ?? "カテゴリ一覧の取得に失敗しました");
+        }
+        const payload = (await response.json()) as CategoryListResponse;
+        setCategories(payload.categories);
+      } catch (error) {
+        setErrorMessage(error instanceof Error ? error.message : "通信に失敗しました");
+      }
     };
     void load();
   }, []);
@@ -55,7 +62,7 @@ export default function MemoCreatePage() {
       }
       window.location.href = "/memos";
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "メモの登録に失敗しました");
+      setErrorMessage(error instanceof Error ? error.message : "通信に失敗しました");
       setIsSubmitting(false);
     }
   };

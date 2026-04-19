@@ -28,9 +28,7 @@ export default function CategoryCreatePage() {
       }
       window.location.href = "/categories";
     } catch (error) {
-      setErrorMessage(
-        error instanceof Error ? error.message : "カテゴリの登録に失敗しました"
-      );
+      setErrorMessage(error instanceof Error ? error.message : "通信に失敗しました");
       setIsSubmitting(false);
     }
   };
