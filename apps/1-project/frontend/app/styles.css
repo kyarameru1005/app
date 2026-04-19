@@ -95,6 +95,15 @@ body {
   font-size: 1rem;
 }
 
+.form-block textarea,
+.form-block select {
+  border: 1px solid #7cb3c7;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
 .button-row {
   display: flex;
   gap: 8px;
