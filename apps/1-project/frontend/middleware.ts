@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/memos", request.url));
   }
 
-  if (pathname.startsWith("/memos") && !hasSession) {
+  if ((pathname.startsWith("/memos") || pathname.startsWith("/categories")) && !hasSession) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
@@ -19,5 +19,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/memos/:path*"]
+  matcher: ["/", "/memos/:path*", "/categories/:path*"]
 };
