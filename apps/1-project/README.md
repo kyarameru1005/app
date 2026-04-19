@@ -44,3 +44,9 @@ docker compose config
 
 - 設計書は `docs/` 配下を正本とする。
 - 実装進捗は `docs/task.md` で管理する。
+
+## CI / Toolchain Policy
+
+- backend の Rust ツールチェーンは `backend/rust-toolchain.toml` で固定する。
+- 依存解決の再現性確保のため `backend/Cargo.lock` をコミット対象にする。
+- CI と Docker ビルドは lockfile を前提に同一依存を使う（`Cargo.lock` を無視しない）。
