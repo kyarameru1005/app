@@ -15,7 +15,7 @@
 
 - [x] `T-001` [high] `frontend` / `backend` / `db` の基本ディレクトリ構成と Docker Compose の雛形を作成する
 - [x] `T-002` [high] frontend / backend / db の env ファイル雛形と設定読み込み方針を実装する
-- [ ] `T-003` [high] PostgreSQL の初期スキーマとして `users` / `categories` / `notes` テーブルを作成する
+- [x] `T-003` [high] PostgreSQL の初期スキーマとして `users` / `categories` / `notes` テーブルを作成する
 - [ ] `T-004` [high] Rust backend の共通骨格として `main.rs`、router、handler、model、repository、error 基盤を作成する
 - [ ] `T-005` [high] backend の DB 接続処理と共通エラーレスポンス変換を実装する
 - [ ] `T-006` [high] Google ログイン開始 / コールバック / ログアウト / `GET /api/users/me` の認証 API とセッション管理を実装する
