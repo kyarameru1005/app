@@ -48,3 +48,9 @@ impl IntoResponse for ApiError {
         (status, Json(body)).into_response()
     }
 }
+
+impl From<sqlx::Error> for ApiError {
+    fn from(_value: sqlx::Error) -> Self {
+        ApiError::InternalServerError
+    }
+}
